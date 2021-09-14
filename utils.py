@@ -15,7 +15,7 @@ import numpy as np
 
 import tensorflow as tf
 
-FLAGS = tf.app.flags.FLAGS
+FLAGS = tf.compat.v1.flags
 
 def transform(images):
   return np.array(images)/127.5 - 1.
