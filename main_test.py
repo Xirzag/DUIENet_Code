@@ -6,7 +6,7 @@ import tensorflow as tf
 import pprint
 import os
 
-flags = tf.app.flags
+flags = tf.compat.v1.flags
 flags.DEFINE_integer("epoch", 120, "Number of epoch [120]")
 flags.DEFINE_integer("batch_size", 1, "The size of batch images [128]")
 flags.DEFINE_integer("image_height", 112, "The size of image to use [230]")
