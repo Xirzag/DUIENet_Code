@@ -12,6 +12,7 @@ from PIL import Image  # for loading images as YCbCr format
 import scipy.misc
 import scipy.ndimage
 import numpy as np
+import imageio
 
 import tensorflow as tf
 
@@ -45,16 +46,16 @@ def imread(path, is_grayscale=False):
   # import pdb 
   # pdb.set_trace()
   if is_grayscale:
-    return scipy.misc.imread(path, flatten=True).astype(np.float)
+    return imageio.imread(path, flatten=True).astype(np.float)
   else:
-    return scipy.misc.imread(path).astype(np.float)
+    return imageio.imread(path).astype(np.float)
 
     
 def imsave(image, path):
   # import pdb 
   # pdb.set_trace()
   imsaved = (inverse_transform(image)).astype(np.float)
-  return scipy.misc.imsave(path, imsaved)
+  return imageio.imwrite(path, imsaved)
 
 def get_image(image_path,is_grayscale=False):
   image = imread(image_path, is_grayscale)
@@ -66,4 +67,4 @@ def get_lable(image_path,is_grayscale=False):
   image = imread(image_path, is_grayscale)
   return image/255.
 def imsave_lable(image, path):
-  return scipy.misc.imsave(path, image*255)
+  return imageio.imwrite(path, image*255)
